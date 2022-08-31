@@ -52,11 +52,32 @@ resource "google_cloud_run_service" "emojize_api_cloud_run" {
   template {
     spec {
       containers {
-        image = "gcr.io/${var.project_name}$/${var.github_repo}:latest"
+        image = "gcr.io/${var.project_name}/${var.github_repo}:latest"
         ports {
           container_port = 8080
         }
       }
     }
+  }
+}
+
+resource "google_cloud_run_service_iam_member" "cloud_run_member" {
+  location = google_cloud_run_service.emojize_api_cloud_run.location
+  project  = google_cloud_run_service.emojize_api_cloud_run.project
+  service  = google_cloud_run_service.emojize_api_cloud_run.name
+  role     = "roles/run.invoker"
+  member   = "allUsers"
+}
+
+resource "google_cloud_run_domain_mapping" "cloud_run_domain_mapping" {
+  location = google_cloud_run_service.emojize_api_cloud_run.location
+  name     = var.custom_domain
+
+  metadata {
+    namespace = var.project_name
+  }
+
+  spec {
+    route_name = google_cloud_run_service.emojize_api_cloud_run.name
   }
 }

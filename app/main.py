@@ -10,3 +10,7 @@ async def emojize(tweet: str, emoji_level:int = 3):
     tweet_emojized = emojizer(tweet, emoji_level)
     
     return {'result': tweet_emojized}
+
+@app.get('/')
+async def hello():
+    return {'msg': 'hello world!'}

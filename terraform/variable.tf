@@ -15,9 +15,13 @@ variable "github_branch" {
 }
 
 variable "cloud_run_service_name" {
-  default = "emojize-api"
+  default = "emoji-api"
 }
 
 variable "gcp_location" {
   default = "us-central1"
+}
+
+variable "custom_domain" {
+  default = "emoji-ru-api.hcp834.com"
 }
