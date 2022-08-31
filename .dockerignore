@@ -2,4 +2,5 @@ venv
 .vscode
 __pycache__
 */__pycache__
+terraform
 app/.env.sample

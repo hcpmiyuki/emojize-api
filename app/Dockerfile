@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:20.04
 
 # mecabとmecab-ipadic-NEologdの導入
 RUN apt-get update \
