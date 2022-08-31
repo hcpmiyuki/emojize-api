@@ -17,7 +17,9 @@ resource "google_cloudbuild_trigger" "push_to_gcr_trigger" {
         "build",
         "-t",
         "gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA",
-        "./app"
+        "-f",
+        "app/Dockerfile",
+        "."
       ]
     }
 
