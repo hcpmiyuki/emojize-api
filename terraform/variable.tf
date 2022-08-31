@@ -13,3 +13,11 @@ variable "github_owner" {
 variable "github_branch" {
   default = "main"
 }
+
+variable "cloud_run_service_name" {
+  default = "emojize-api"
+}
+
+variable "gcp_location" {
+  default = "us-central1"
+}
